@@ -1,0 +1,36 @@
+#%RAML 1.0
+baseUri: https://mocksvc.mulesoft.com/mocks/fd2bd5e1-d4b9-4749-a839-0f5e00a34949 # 
+title: New API for retrive wsact by agent information
+version: '1.0'
+protocols:
+  - HTTP
+  
+traits: 
+   hasResponseItem :  !include traits/hasResponseItem.raml
+   hasCreated : !include traits/hasCreated.raml
+   hasBadResponse : !include traits/hasBadResponse.raml
+   queryParameters : !include traits/query_parameters_search_type.raml
+
+resourceTypes: 
+ item:
+    usage: use this resourceType to represent any single item
+    description: a single <<typename>> collection
+    get:
+     
+     is: [queryParameters, hasResponseItem: {typename: }]
+    
+    post:
+     body: 
+      application/json:
+        example: !include examples/post_example_response.raml
+
+     
+    is: [hasCreated: {typename: }]
+
+
+/wsact:
+   type:  { item : {"typename" : "wsact"} }
+
+/wzat:
+   type:  { item : {"typename": "wzat"}}
+

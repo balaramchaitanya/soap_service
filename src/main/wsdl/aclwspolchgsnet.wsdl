@@ -1,0 +1,1407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://unitedfiregroup.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://unitedfiregroup.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">acl system aclwspolchgsnet web services.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://unitedfiregroup.com/">
+      <s:element name="WSACP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSACPRequest" type="tns:WSACP_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSACP_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SEARCH_TYP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEARCH_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LBACCOUNT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LBPOLICY" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSACPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSACPResult" type="tns:WSACP_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSACP_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SEARCH_TYP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEARCH_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LBACCOUNT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LBACCOUNT_List" type="tns:General_ListItems" />
+          <s:element minOccurs="0" maxOccurs="1" name="LBPOLICY" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LBPOLICY_List" type="tns:General_ListItems" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOACCOUNT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOPOLICY" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="General_ListItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="row" type="tns:General_ListColumns" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="General_ListColumns">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="column" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="General_StatusMessages">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StatusMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSACT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSACTRequest" type="tns:WSACT_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSACT_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SEARCH_TYP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEARCH_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSACTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSACTResult" type="tns:WSACT_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSACT_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SEARCH_TYP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEARCH_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCOUNT_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCT_NAME1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCT_NAME2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCT_ADDR1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCT_ADDR2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCT_CITY" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCT_ST" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCT_ZIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PHONE_1" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="PHONE_2" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="PHONE_3" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="FAX_1" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="FAX_2" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="FAX_3" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="SERV_CNTR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EDELIVERY" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMAIL_ADDR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WBSITE_ADR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CONTACT_NM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItems" type="tns:WSACT_Output_LineItems" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WSACT_Output_LineItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="POL_STAT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TYPE_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="P_PLN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COB" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFF_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="EXP_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAME1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_NAME1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RATE_ST" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADDR1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CITY" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATE_2A" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZIPCODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POL_STATUS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BILL_DESC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POL_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CHG_YN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POL_AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="BUS_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="A_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPLNO_UW" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LC_CONTACT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LC_PHONE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_ACT_DT" type="s:integer" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSAD2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSAD2Request" type="tns:WSAD2_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSAD2_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COB" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANSNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="KEY1_8N" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="KEY2_8N" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="KEY3_8N" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="KEY_FORM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MG_TYPE" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSAD2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSAD2Result" type="tns:WSAD2_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSAD2_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COB" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANSNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="KEY1_8N" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="KEY2_8N" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="KEY3_8N" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="KEY_FORM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MG_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_NAME1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_NAME2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_ADDR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_CSZ" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BILL_LOAN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="INT_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSADI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSADIRequest" type="tns:WSADI_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSADI_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COB" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANSNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ORIGTERM" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSADIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSADIResult" type="tns:WSADI_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSADI_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COB" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANSNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ORIGTERM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDIND" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItems" type="tns:WSADI_Output_LineItems" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WSADI_Output_LineItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ACD_IND" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CODE_4N" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="MG_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UNIT_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOC_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="BLD_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="ITEM_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="FORM_ED_DT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ISPEC_NAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="INT_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_NAME1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_NAME2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_ADDR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_CITY" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_ZIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BILL_LOAN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESCRIPT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="O_NAME1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="O_NAME2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="O_ADDR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="O_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="O_CSZ" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="O_LOAN" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSAIL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSAILRequest" type="tns:WSAIL_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSAIL_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COB" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFF_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSAILResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSAILResult" type="tns:WSAIL_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSAIL_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COB" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFF_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItems" type="tns:WSAIL_Output_LineItems" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WSAIL_Output_LineItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_NAME1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_NAME2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_ADDR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_CITY" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_ZIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="INT_TYPE" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSCA1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSCA1Request" type="tns:WSCA1_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSCA1_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COB" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOSS_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSCA1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSCA1Result" type="tns:WSCA1_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSCA1_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COB" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOSS_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAME1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGT_NAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItems" type="tns:WSCA1_Output_LineItems" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WSCA1_Output_LineItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="U_NUMBER1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="U_YEAR1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="U_MAKE1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="U_MODEL1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="U_VIN1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="U_CLASS1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="U_COST1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="U_RADIUS1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="U_STATE1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="U_TERR1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="U_OTC_DED" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="U_COLL_DED" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSDR1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSDR1Request" type="tns:WSDR1_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSDR1_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="COBR" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="REQ_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSDR1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSDR1Result" type="tns:WSDR1_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSDR1_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="COBR" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="REQ_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POL_AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="INS_NAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItems" type="tns:WSDR1_Output_LineItems" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WSDR1_Output_LineItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CHG_STATUS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAME_20A" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAME1_20A" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAME_25A" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUFFIX" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DL_NO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATE_A" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPL_IND" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DRIVER_IND" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DOB" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DATE_HIRE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DESC_10A" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEX_DESC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REL_DESC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EMPL_DESC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COMMENT_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DELETED" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="REL_IND" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MVR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WATCH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DRVR_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SSN" type="s:integer" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSFRM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSFRMRequest" type="tns:WSFRM_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSFRM_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SRCH_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATE_ABBR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FORM_NO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FORM_EDDT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KEY_WORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CO_UNIQUE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFF_DT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COVITEM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSFRMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSFRMResult" type="tns:WSFRM_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSFRM_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SRCH_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATE_ABBR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FORM_NO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FORM_EDDT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KEY_WORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CO_UNIQUE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFF_DT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COVITEM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItems" type="tns:WSFRM_Output_LineItems" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WSFRM_Output_LineItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_NO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_EDDT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_IRNAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_DEC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_EFF" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_EXP" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_NAME" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSGNW">
+        <s:complexType />
+      </s:element>
+      <s:element name="WSGNWResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSGNWResult" type="tns:WSGNW_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSGNW_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSIRU">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSIRURequest" type="tns:WSIRU_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSIRU_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DOC_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="SCAN_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="ASSIGN_NUM" type="s:integer" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSIRUResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSIRUResult" type="tns:WSIRU_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSIRU_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DOC_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="SCAN_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DR_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="ASSIGN_NUM" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSLOC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSLOCRequest" type="tns:WSLOC_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSLOC_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="COBR" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOSS_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSLOCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSLOCResult" type="tns:WSLOC_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSLOC_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="COBR" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOSS_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItems" type="tns:WSLOC_Output_LineItems" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WSLOC_Output_LineItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LOC_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="BLD_NO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLUE_BLDN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLUE_STRET" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLUE_UNITW" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CLUE_UNITN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CITY" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATE_2A" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZIPCODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSPFO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSPFORequest" type="tns:WSPFO_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSPFO_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COBR" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFF_DT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PREV_POLNO" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSPFOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSPFOResult" type="tns:WSPFO_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSPFO_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COBR" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFF_DT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PREV_POLNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IR_PKGTYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IR_REFNUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IR_DRAWER" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CA_REFNUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CG_REFNUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CP_REFNUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CR_REFNUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CX_REFNUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EO_REFNUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IM_REFNUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OP_REFNUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PC_REFNUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WC_REFNUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BP_REFNUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CA_PREM" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="CG_PREM" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="CP_PREM" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="CR_PREM" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="CX_PREM" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="EO_PREM" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="IM_PREM" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="OP_PREM" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="PC_PREM" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="WC_PREM" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="BP_PREM" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItems" type="tns:WSPFO_Output_LineItems" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WSPFO_Output_LineItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_NO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_NAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_EDDT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_DEC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_COPY" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_EFF" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_EXP" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="FRM_IRNAME" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSPOL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSPOLRequest" type="tns:WSPOL_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSPOL_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="AMEND_DATE" type="s:integer" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSPOLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSPOLResult" type="tns:WSPOL_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSPOL_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="AMEND_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="IRSTATUS" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COB" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSSCA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSSCARequest" type="tns:WSSCA_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSSCA_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ACCT_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEARCH_TXT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSSCAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSSCAResult" type="tns:WSSCA_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSSCA_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ACCT_STATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEARCH_TXT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItems" type="tns:WSSCA_Output_LineItems" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WSSCA_Output_LineItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ACCTNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCTNAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCTADDR1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCTADDR2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCTCITY" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCTST" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCTZIP" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSST2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSST2Request" type="tns:WSST2_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSST2_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="CPB_IND" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STARTDATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="ENDDATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DELETED" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STAT_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEARCH_TXT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CERT_SRCH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CERT_ACCT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSST2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSST2Result" type="tns:WSST2_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSST2_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="CPB_IND" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STARTDATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="ENDDATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DELETED" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STAT_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SEARCH_TXT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CERT_SRCH" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CERT_ACCT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LST_RECORD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LineItems" type="tns:WSST2_Output_LineItems" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WSST2_Output_LineItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFF_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="ACCOUNT_NO" type="s:integer" />
+          <s:element minOccurs="1" maxOccurs="1" name="PREMIUM" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="NAME1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CPBIND" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="STATTYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AMEND_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADJUSTED" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROC_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="TIME_8N" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="LONG_NAME1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SC_IND" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MSG1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MSG2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MSG3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MSG4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="COBR" type="s:integer" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSSTA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSSTARequest" type="tns:WSSTA_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSSTA_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROC_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="STAT_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CPB_IND" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFF_DATE" type="s:integer" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSSTAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSSTAResult" type="tns:WSSTA_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSSTA_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROC_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="STAT_TYPE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CPB_IND" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EFF_DATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSSUB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSSUBRequest" type="tns:WSSUB_Input" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSSUB_Input">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COB" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANSNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDIND" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ORIGTERM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CHGDATE" type="s:integer" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="WSSUBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WSSUBResult" type="tns:WSSUB_Output" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WSSUB_Output">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="COB" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="POLNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="TERM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANSNO" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="DEC_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AGENT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="UPDIND" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ORIGTERM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CHGDATE" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSMESSAGE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSRESULT" type="s:integer" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:General_StatusMessages" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="WSACPSoapIn">
+    <wsdl:part name="parameters" element="tns:WSACP" />
+  </wsdl:message>
+  <wsdl:message name="WSACPSoapOut">
+    <wsdl:part name="parameters" element="tns:WSACPResponse" />
+  </wsdl:message>
+  <wsdl:message name="WSACTSoapIn">
+    <wsdl:part name="parameters" element="tns:WSACT" />
+  </wsdl:message>
+  <wsdl:message name="WSACTSoapOut">
+    <wsdl:part name="parameters" element="tns:WSACTResponse" />
+  </wsdl:message>
+  <wsdl:message name="WSAD2SoapIn">
+    <wsdl:part name="parameters" element="tns:WSAD2" />
+  </wsdl:message>
+  <wsdl:message name="WSAD2SoapOut">
+    <wsdl:part name="parameters" element="tns:WSAD2Response" />
+  </wsdl:message>
+  <wsdl:message name="WSADISoapIn">
+    <wsdl:part name="parameters" element="tns:WSADI" />
+  </wsdl:message>
+  <wsdl:message name="WSADISoapOut">
+    <wsdl:part name="parameters" element="tns:WSADIResponse" />
+  </wsdl:message>
+  <wsdl:message name="WSAILSoapIn">
+    <wsdl:part name="parameters" element="tns:WSAIL" />
+  </wsdl:message>
+  <wsdl:message name="WSAILSoapOut">
+    <wsdl:part name="parameters" element="tns:WSAILResponse" />
+  </wsdl:message>
+  <wsdl:message name="WSCA1SoapIn">
+    <wsdl:part name="parameters" element="tns:WSCA1" />
+  </wsdl:message>
+  <wsdl:message name="WSCA1SoapOut">
+    <wsdl:part name="parameters" element="tns:WSCA1Response" />
+  </wsdl:message>
+  <wsdl:message name="WSDR1SoapIn">
+    <wsdl:part name="parameters" element="tns:WSDR1" />
+  </wsdl:message>
+  <wsdl:message name="WSDR1SoapOut">
+    <wsdl:part name="parameters" element="tns:WSDR1Response" />
+  </wsdl:message>
+  <wsdl:message name="WSFRMSoapIn">
+    <wsdl:part name="parameters" element="tns:WSFRM" />
+  </wsdl:message>
+  <wsdl:message name="WSFRMSoapOut">
+    <wsdl:part name="parameters" element="tns:WSFRMResponse" />
+  </wsdl:message>
+  <wsdl:message name="WSGNWSoapIn">
+    <wsdl:part name="parameters" element="tns:WSGNW" />
+  </wsdl:message>
+  <wsdl:message name="WSGNWSoapOut">
+    <wsdl:part name="parameters" element="tns:WSGNWResponse" />
+  </wsdl:message>
+  <wsdl:message name="WSIRUSoapIn">
+    <wsdl:part name="parameters" element="tns:WSIRU" />
+  </wsdl:message>
+  <wsdl:message name="WSIRUSoapOut">
+    <wsdl:part name="parameters" element="tns:WSIRUResponse" />
+  </wsdl:message>
+  <wsdl:message name="WSLOCSoapIn">
+    <wsdl:part name="parameters" element="tns:WSLOC" />
+  </wsdl:message>
+  <wsdl:message name="WSLOCSoapOut">
+    <wsdl:part name="parameters" element="tns:WSLOCResponse" />
+  </wsdl:message>
+  <wsdl:message name="WSPFOSoapIn">
+    <wsdl:part name="parameters" element="tns:WSPFO" />
+  </wsdl:message>
+  <wsdl:message name="WSPFOSoapOut">
+    <wsdl:part name="parameters" element="tns:WSPFOResponse" />
+  </wsdl:message>
+  <wsdl:message name="WSPOLSoapIn">
+    <wsdl:part name="parameters" element="tns:WSPOL" />
+  </wsdl:message>
+  <wsdl:message name="WSPOLSoapOut">
+    <wsdl:part name="parameters" element="tns:WSPOLResponse" />
+  </wsdl:message>
+  <wsdl:message name="WSSCASoapIn">
+    <wsdl:part name="parameters" element="tns:WSSCA" />
+  </wsdl:message>
+  <wsdl:message name="WSSCASoapOut">
+    <wsdl:part name="parameters" element="tns:WSSCAResponse" />
+  </wsdl:message>
+  <wsdl:message name="WSST2SoapIn">
+    <wsdl:part name="parameters" element="tns:WSST2" />
+  </wsdl:message>
+  <wsdl:message name="WSST2SoapOut">
+    <wsdl:part name="parameters" element="tns:WSST2Response" />
+  </wsdl:message>
+  <wsdl:message name="WSSTASoapIn">
+    <wsdl:part name="parameters" element="tns:WSSTA" />
+  </wsdl:message>
+  <wsdl:message name="WSSTASoapOut">
+    <wsdl:part name="parameters" element="tns:WSSTAResponse" />
+  </wsdl:message>
+  <wsdl:message name="WSSUBSoapIn">
+    <wsdl:part name="parameters" element="tns:WSSUB" />
+  </wsdl:message>
+  <wsdl:message name="WSSUBSoapOut">
+    <wsdl:part name="parameters" element="tns:WSSUBResponse" />
+  </wsdl:message>
+  <wsdl:portType name="aclwspolchgsnetSoap">
+    <wsdl:operation name="WSACP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSACP.&lt;inputParameters&gt;&lt;inputParameter name='SEARCH_TYP' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='SEARCH_NO' hostDataType='number' length='10' /&gt;&lt;inputParameter name='AGENT' hostDataType='number' length='6' /&gt;&lt;inputParameter name='LBACCOUNT' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='LBPOLICY' hostDataType='alpha' length='1' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSACPSoapIn" />
+      <wsdl:output message="tns:WSACPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSACT">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSACT.&lt;inputParameters&gt;&lt;inputParameter name='SEARCH_TYP' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='SEARCH_NO' hostDataType='number' length='10' /&gt;&lt;inputParameter name='AGENT' hostDataType='number' length='6' /&gt;&lt;inputParameter name='LST_RECORD' hostDataType='alpha' length='1' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSACTSoapIn" />
+      <wsdl:output message="tns:WSACTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSAD2">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSAD2.&lt;inputParameters&gt;&lt;inputParameter name='COB' hostDataType='number' length='4' /&gt;&lt;inputParameter name='POLNO' hostDataType='number' length='8' /&gt;&lt;inputParameter name='TERM' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='TRANSNO' hostDataType='number' length='3' /&gt;&lt;inputParameter name='DEC_CODE' hostDataType='alpha' length='2' /&gt;&lt;inputParameter name='AGENT' hostDataType='number' length='6' /&gt;&lt;inputParameter name='KEY1_8N' hostDataType='number' length='8' /&gt;&lt;inputParameter name='KEY2_8N' hostDataType='number' length='8' /&gt;&lt;inputParameter name='KEY3_8N' hostDataType='number' length='8' /&gt;&lt;inputParameter name='KEY_FORM' hostDataType='alpha' length='14' /&gt;&lt;inputParameter name='MG_TYPE' hostDataType='alpha' length='1' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSAD2SoapIn" />
+      <wsdl:output message="tns:WSAD2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSADI">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSADI.&lt;inputParameters&gt;&lt;inputParameter name='COB' hostDataType='number' length='4' /&gt;&lt;inputParameter name='POLNO' hostDataType='number' length='8' /&gt;&lt;inputParameter name='TERM' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='TRANSNO' hostDataType='number' length='3' /&gt;&lt;inputParameter name='AGENT' hostDataType='number' length='6' /&gt;&lt;inputParameter name='DEC_CODE' hostDataType='alpha' length='2' /&gt;&lt;inputParameter name='ORIGTERM' hostDataType='alpha' length='1' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSADISoapIn" />
+      <wsdl:output message="tns:WSADISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSAIL">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSAIL.&lt;inputParameters&gt;&lt;inputParameter name='COB' hostDataType='number' length='4' /&gt;&lt;inputParameter name='POLNO' hostDataType='number' length='8' /&gt;&lt;inputParameter name='EFF_DATE' hostDataType='number' length='8' /&gt;&lt;inputParameter name='DEC_CODE' hostDataType='alpha' length='2' /&gt;&lt;inputParameter name='LST_RECORD' hostDataType='alpha' length='75' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSAILSoapIn" />
+      <wsdl:output message="tns:WSAILSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSCA1">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSCA1.&lt;inputParameters&gt;&lt;inputParameter name='COB' hostDataType='number' length='4' /&gt;&lt;inputParameter name='POLNO' hostDataType='number' length='8' /&gt;&lt;inputParameter name='AGENT' hostDataType='number' length='6' /&gt;&lt;inputParameter name='LOSS_DATE' hostDataType='number' length='8' /&gt;&lt;inputParameter name='LST_RECORD' hostDataType='alpha' length='40' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSCA1SoapIn" />
+      <wsdl:output message="tns:WSCA1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSDR1">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSDR1.&lt;inputParameters&gt;&lt;inputParameter name='AGENT' hostDataType='number' length='6' /&gt;&lt;inputParameter name='COBR' hostDataType='number' length='4' /&gt;&lt;inputParameter name='POLNO' hostDataType='number' length='8' /&gt;&lt;inputParameter name='REQ_TYPE' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='LST_RECORD' hostDataType='alpha' length='50' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSDR1SoapIn" />
+      <wsdl:output message="tns:WSDR1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSFRM">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSFRM.&lt;inputParameters&gt;&lt;inputParameter name='SRCH_TYPE' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='STATE_ABBR' hostDataType='alpha' length='2' /&gt;&lt;inputParameter name='FORM_NO' hostDataType='alpha' length='10' /&gt;&lt;inputParameter name='FORM_EDDT' hostDataType='alpha' length='4' /&gt;&lt;inputParameter name='DEC_CODE' hostDataType='alpha' length='2' /&gt;&lt;inputParameter name='KEY_WORD' hostDataType='alpha' length='30' /&gt;&lt;inputParameter name='CO_UNIQUE' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='EFF_DT' hostDataType='alpha' length='8' /&gt;&lt;inputParameter name='COVITEM' hostDataType='alpha' length='3' /&gt;&lt;inputParameter name='LST_RECORD' hostDataType='alpha' length='78' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSFRMSoapIn" />
+      <wsdl:output message="tns:WSFRMSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSGNW">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSGNW.</wsdl:documentation>
+      <wsdl:input message="tns:WSGNWSoapIn" />
+      <wsdl:output message="tns:WSGNWSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSIRU">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSIRU.&lt;inputParameters&gt;&lt;inputParameter name='DOC_TYPE' hostDataType='alpha' length='4' /&gt;&lt;inputParameter name='POLNO' hostDataType='number' length='8' /&gt;&lt;inputParameter name='SCAN_DATE' hostDataType='number' length='8' /&gt;&lt;inputParameter name='DR_NO' hostDataType='number' length='4' /&gt;&lt;inputParameter name='ASSIGN_NUM' hostDataType='number' length='10' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSIRUSoapIn" />
+      <wsdl:output message="tns:WSIRUSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSLOC">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSLOC.&lt;inputParameters&gt;&lt;inputParameter name='AGENT' hostDataType='number' length='6' /&gt;&lt;inputParameter name='COBR' hostDataType='number' length='4' /&gt;&lt;inputParameter name='POLNO' hostDataType='number' length='8' /&gt;&lt;inputParameter name='LOSS_DATE' hostDataType='number' length='8' /&gt;&lt;inputParameter name='LST_RECORD' hostDataType='alpha' length='30' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSLOCSoapIn" />
+      <wsdl:output message="tns:WSLOCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSPFO">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSPFO.&lt;inputParameters&gt;&lt;inputParameter name='COBR' hostDataType='number' length='4' /&gt;&lt;inputParameter name='POLNO' hostDataType='number' length='8' /&gt;&lt;inputParameter name='EFF_DT' hostDataType='alpha' length='8' /&gt;&lt;inputParameter name='DEC_CODE' hostDataType='alpha' length='2' /&gt;&lt;inputParameter name='LST_RECORD' hostDataType='alpha' length='78' /&gt;&lt;inputParameter name='PREV_POLNO' hostDataType='alpha' length='15' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSPFOSoapIn" />
+      <wsdl:output message="tns:WSPFOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSPOL">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSPOL.&lt;inputParameters&gt;&lt;inputParameter name='AGENT' hostDataType='number' length='6' /&gt;&lt;inputParameter name='POLNO' hostDataType='number' length='8' /&gt;&lt;inputParameter name='AMEND_DATE' hostDataType='number' length='8' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSPOLSoapIn" />
+      <wsdl:output message="tns:WSPOLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSSCA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSSCA.&lt;inputParameters&gt;&lt;inputParameter name='ACCT_STATE' hostDataType='alpha' length='2' /&gt;&lt;inputParameter name='SEARCH_TXT' hostDataType='alpha' length='30' /&gt;&lt;inputParameter name='LST_RECORD' hostDataType='alpha' length='75' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSSCASoapIn" />
+      <wsdl:output message="tns:WSSCASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSST2">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSST2.&lt;inputParameters&gt;&lt;inputParameter name='AGENT' hostDataType='number' length='6' /&gt;&lt;inputParameter name='CPB_IND' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='STARTDATE' hostDataType='number' length='8' /&gt;&lt;inputParameter name='ENDDATE' hostDataType='number' length='8' /&gt;&lt;inputParameter name='DELETED' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='STAT_TYPE' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='SEARCH_TXT' hostDataType='alpha' length='38' /&gt;&lt;inputParameter name='CERT_SRCH' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='CERT_ACCT' hostDataType='number' length='10' /&gt;&lt;inputParameter name='LST_RECORD' hostDataType='alpha' length='78' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSST2SoapIn" />
+      <wsdl:output message="tns:WSST2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSSTA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSSTA.&lt;inputParameters&gt;&lt;inputParameter name='AGENT' hostDataType='number' length='6' /&gt;&lt;inputParameter name='PROC_DATE' hostDataType='number' length='8' /&gt;&lt;inputParameter name='STAT_TYPE' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='CPB_IND' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='POLNO' hostDataType='number' length='8' /&gt;&lt;inputParameter name='DEC_CODE' hostDataType='alpha' length='2' /&gt;&lt;inputParameter name='EFF_DATE' hostDataType='number' length='8' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSSTASoapIn" />
+      <wsdl:output message="tns:WSSTASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WSSUB">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Web Service method for WSSUB.&lt;inputParameters&gt;&lt;inputParameter name='COB' hostDataType='number' length='4' /&gt;&lt;inputParameter name='POLNO' hostDataType='number' length='8' /&gt;&lt;inputParameter name='TERM' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='TRANSNO' hostDataType='number' length='3' /&gt;&lt;inputParameter name='DEC_CODE' hostDataType='alpha' length='2' /&gt;&lt;inputParameter name='AGENT' hostDataType='number' length='6' /&gt;&lt;inputParameter name='UPDIND' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='ORIGTERM' hostDataType='alpha' length='1' /&gt;&lt;inputParameter name='CHGDATE' hostDataType='number' length='8' /&gt;&lt;/inputParameters&gt;</wsdl:documentation>
+      <wsdl:input message="tns:WSSUBSoapIn" />
+      <wsdl:output message="tns:WSSUBSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="aclwspolchgsnetSoap" type="tns:aclwspolchgsnetSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="WSACP">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSACP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSACT">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSACT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSAD2">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSAD2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSADI">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSADI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSAIL">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSAIL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSCA1">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSCA1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSDR1">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSDR1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSFRM">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSFRM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSGNW">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSGNW" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSIRU">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSIRU" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSLOC">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSLOC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSPFO">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSPFO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSPOL">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSPOL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSSCA">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSSCA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSST2">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSST2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSSTA">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSSTA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSSUB">
+      <soap:operation soapAction="http://unitedfiregroup.com/WSSUB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="aclwspolchgsnetSoap12" type="tns:aclwspolchgsnetSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="WSACP">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSACP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSACT">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSACT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSAD2">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSAD2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSADI">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSADI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSAIL">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSAIL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSCA1">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSCA1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSDR1">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSDR1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSFRM">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSFRM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSGNW">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSGNW" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSIRU">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSIRU" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSLOC">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSLOC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSPFO">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSPFO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSPOL">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSPOL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSSCA">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSSCA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSST2">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSST2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSSTA">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSSTA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WSSUB">
+      <soap12:operation soapAction="http://unitedfiregroup.com/WSSUB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="aclwspolchgsnet">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">acl system aclwspolchgsnet web services.</wsdl:documentation>
+    <wsdl:port name="aclwspolchgsnetSoap" binding="tns:aclwspolchgsnetSoap">
+      <soap:address location="https://dev2.services.cr.unitedfiregroup.com/aclwspolchgsnet/aclwspolchgsnet.asmx" />
+    </wsdl:port>
+    <wsdl:port name="aclwspolchgsnetSoap12" binding="tns:aclwspolchgsnetSoap12">
+      <soap12:address location="https://dev2.services.cr.unitedfiregroup.com/aclwspolchgsnet/aclwspolchgsnet.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

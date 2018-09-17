@@ -1,0 +1,83 @@
+{
+    "phone": "319-363-6762",
+    "fax": "319-363-8992",
+    "search_type": "A",
+    "search_no": "3000074100",
+    "agent": "151134",
+    "wsresult": "100",
+    "wsmessage": "SUCCESSFUL",
+    "account_no": "3000074110",
+    "acct_name1": "BARTUNEK APPLIANCE INC",
+    "account_address": "2709 PRIMROSE LN SW",
+    "acct_city": "CEDAR RAPIDS",
+    "acct_st": "IA",
+    "acct_zip": "52404-2453",
+    "service_center": "Y",
+    "contact_name": "CHERRYL BARTUNEK",
+    "lineitems": [
+        {
+            "POL_STAT": "II",
+            "TYPE_CODE": "BP2",
+            "P_PLN": "D",
+            "COB": "331",
+            "POLNO": "60039894",
+            "EFF_DATE": "20171120",
+            "EXP_DATE": "20181120",
+            "NAME1": "BARTUNEK APPLIANCE INC",
+            "LONG_NAME1": "BARTUNEK APPLIANCE INC &",
+            "RATE_ST": "IA",
+            "ADDR1": "2709 PRIMROSE LN SW",
+            "CITY": "CEDAR RAPIDS",
+            "STATE_2A": "IA",
+            "ZIPCODE": "52404-2453",
+            "POL_STATUS": "In Force",
+            "BILL_DESC": "Direct Bill",
+            "POL_TYPE": "UNI-PAK",
+            "CHG_YN": "Y",
+            "POL_AGENT": "151134",
+            "BUS_TYPE": "C",
+            "EMPLNO_UW": "2908",
+            "TERM": "C",
+            "DEC_ACT_DT": "20171016"
+        },
+        {
+            "COB": "0",
+            "POLNO": "0",
+            "EFF_DATE": "0",
+            "EXP_DATE": "0",
+            "POL_AGENT": "0",
+            "EMPLNO_UW": "0",
+            "DEC_ACT_DT": "0"
+        },
+        {
+            "COB": "0",
+            "POLNO": "0",
+            "EFF_DATE": "0",
+            "EXP_DATE": "0",
+            "POL_AGENT": "0",
+            "EMPLNO_UW": "0",
+            "DEC_ACT_DT": "0"
+        },
+        {
+            "COB": "0",
+            "POLNO": "0",
+            "EFF_DATE": "0",
+            "EXP_DATE": "0",
+            "POL_AGENT": "0",
+            "EMPLNO_UW": "0",
+            "DEC_ACT_DT": "0"
+        },
+        {
+            "COB": "0",
+            "POLNO": "0",
+            "EFF_DATE": "0",
+            "EXP_DATE": "0",
+            "POL_AGENT": "0",
+            "EMPLNO_UW": "0",
+            "DEC_ACT_DT": "0"
+        }
+    ],
+    "statusmessages": {
+        "StatusMessage": "17:09:55:75    INQUIRY REQUEST"
+    }
+}

@@ -1,0 +1,65 @@
+<mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit-soap="http://www.mulesoft.org/schema/mule/apikit-soap" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://www.mulesoft.org/schema/mule/apikit-soap http://www.mulesoft.org/schema/mule/apikit-soap/current/mule-apikit-soap.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+  <http:listener-config name="api-httpListenerConfig" host="localhost" port="8081" doc:name="HTTP Listener Configuration" />
+  <apikit-soap:config name="/aclwspolchgsnet/aclwspolchgsnetSoap/api-config" wsdlUrl="aclwspolchgsnet.wsdl" serviceName="aclwspolchgsnet" portName="aclwspolchgsnetSoap" doc:name="APIkit SOAP: Configuration"/>
+  <flow name="api-main">
+    <http:listener path="/aclwspolchgsnet/aclwspolchgsnetSoap" config-ref="api-httpListenerConfig" doc:name="/aclwspolchgsnet/aclwspolchgsnetSoap" />
+    <apikit-soap:router config-ref="/aclwspolchgsnet/aclwspolchgsnetSoap/api-config" doc:name="SOAP Router"/>
+  </flow>
+  <flow name="WSACP:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSACP:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSACT:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+        <flow-ref name="WSACT_implementationFlow" doc:name="WSACT_implementationFlow"/>
+
+  </flow>
+  <flow name="WSAD2:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSAD2:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSADI:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSADI:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSAIL:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSAIL:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSCA1:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSCA1:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSDR1:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSDR1:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSFRM:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSFRM:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSGNW:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSGNW:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSIRU:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSIRU:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSLOC:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSLOC:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSPFO:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSPFO:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSPOL:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSPOL:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSSCA:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSSCA:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSST2:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSST2:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSSTA:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSSTA:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+  <flow name="WSSUB:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config">
+    <set-payload value="&lt;soap:Fault xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;&lt;faultcode&gt;soap:Server&lt;/faultcode&gt;&lt;faultstring&gt;Operation [WSSUB:/aclwspolchgsnet/aclwspolchgsnetSoap/api-config] not implemented&lt;/faultstring&gt;&lt;/soap:Fault&gt;" doc:name="Set Payload"/>
+  </flow>
+</mule>

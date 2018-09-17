@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:ws="http://www.mulesoft.org/schema/mule/ws" xmlns:metadata="http://www.mulesoft.org/schema/mule/metadata" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ws http://www.mulesoft.org/schema/mule/ws/current/mule-ws.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
+    <ws:consumer-config name="Web_Service_Consumer" wsdlLocation="aclwspolchgsnet.wsdl" service="aclwspolchgsnet" port="aclwspolchgsnetSoap" serviceAddress="http://localhost:8081/aclwspolchgsnet/aclwspolchgsnetSoap" doc:name="Web Service Consumer"/>
+    <flow name="rest_implementation">
+        <dw:transform-message doc:name="parsing to xml input for web service">
+            <dw:set-payload><![CDATA[%dw 1.0
+%input payload application/json
+%output application/xml 
+---
+{
+soapenv:
+	WSACT: {
+		WSACTRequest: {
+			SEARCH_TYP: inboundProperties['http.query.params'].search_typ,
+			SEARCH_NO: inboundProperties['http.query.params'].search_no,
+			AGENT: inboundProperties['http.query.params'].agent,
+			LST_RECORD: inboundProperties['http.query.params'].lst_record
+		}
+	}
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+        <ws:consumer config-ref="Web_Service_Consumer" operation="WSACT" doc:name="Web Service Consumer : consuming soap service"/>
+        <json:xml-to-json-transformer returnClass="java.lang.Object" doc:name="XML to JSON"/>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+skipNullOn="everywhere"
+%namespace ns0 http://unitedfiregroup.com/
+
+---
+payload.WSACTResponse.WSACTResult mapObject  (item,index) -> {
+
+(  phone:payload.WSACTResponse.WSACTResult.PHONE_1 ++ "-" ++ payload.WSACTResponse.WSACTResult.PHONE_2 ++ "-" ++ payload.WSACTResponse.WSACTResult.PHONE_3 ) when index !="",
+(fax:payload.WSACTResponse.WSACTResult.FAX_1 ++ "-" ++ payload.WSACTResponse.WSACTResult.FAX_2 ++ "-" ++ payload.WSACTResponse.WSACTResult.FAX_3) when index !="" ,
+(contact_name: payload.WSACTResponse.WSACTResult.CONTACT_NM) when index as :string =='CONTACT_NM',
+(search_type: payload.WSACTResponse.WSACTResult.SEARCH_TYP) when index as :string =='SEARCH_TYP',
+(account_address: payload.WSACTResponse.WSACTResult.ACCT_ADDR1) when index as :string =='ACCT_ADDR1',
+(account_state: payload.WSACTResponse.WSACTResult.ACCT_ST) when index as :string =='ACCT_STATE',
+(service_center: payload.WSACTResponse.WSACTResult.SERV_CNTR) when index as :string =='SERV_CNTR',
+((lower index) :  item) when index as :string !=""
+	 
+	}-'phone_1' -'phone_2' -'phone_3' -'fax_1' -'fax_2'-'fax_3' -'contact_nm' -'search_typ'-'acct_addr1' -'acct_state'-'serv_cntr'
+]]></dw:set-payload>
+        </dw:transform-message>
+        <logger message="#[payload]" level="INFO" doc:name="Logger : Displaying payload"/>
+        <catch-exception-strategy  doc:name="Catch Exception Strategy">
+            <set-payload value="#[exception.getSummaryMessage()]" doc:name="Set Payload to exception summary message"/>
+            <set-property propertyName="'http.status'" value="500" doc:name="Property set to 500"/>
+        </catch-exception-strategy>
+    </flow>
+</mule>

@@ -1,0 +1,9 @@
+#%RAML 1.0 Trait
+
+  responses: 
+    200:
+     description: endpoint to get <<typename>> data
+     body: 
+      application/json:
+        type: <<typename>>
+        example: !include ../examples/example_response.raml
