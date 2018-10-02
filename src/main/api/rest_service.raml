@@ -1,36 +1,53 @@
 #%RAML 1.0
-baseUri: https://mocksvc.mulesoft.com/mocks/fd2bd5e1-d4b9-4749-a839-0f5e00a34949 # 
-title: New API for retrive wsact by agent information
-version: '1.0'
-protocols:
-  - HTTP
-  
+version: v1
+title: Sentiment Analysis Data Service
+
 traits: 
-   hasResponseItem :  !include traits/hasResponseItem.raml
-   hasCreated : !include traits/hasCreated.raml
-   hasBadResponse : !include traits/hasBadResponse.raml
-   queryParameters : !include traits/query_parameters_search_type.raml
+  queryParameters : !include Trait/queryparameters-trait.raml
+  hasResponseItem :  !include Trait/Response200-trait.raml
+
+uses:
+  library2: Data_Type/response-library.raml
 
 resourceTypes: 
- item:
+  item:
     usage: use this resourceType to represent any single item
     description: a single <<typename>> collection
     get:
-     
-     is: [queryParameters, hasResponseItem ]
+     is: [queryParameters]
+     responses:
+      200:
+       description: valid response data
+       body:
+        application/json:
+         type: library2.getdata
+         example: !include examples/getresponse-example.raml
+         
+      400:
+       description: error response
+       body:
+        application/json:
+         type: library2.Message
+         example: !include examples/badresponse-example.raml
     
     post:
-     body: 
-      application/json:
-        example: !include examples/post_example_response.raml
-
-     
-    is: [ hasCreated]
-
-
+     responses:
+      201:
+       body:
+        application/json:
+         type: library2.getdata
+         example: !include examples/getresponse-example.raml
+       
+      401:
+       body:
+        application/json:
+         type: library2.Message
+         example: !include examples/badresponse-example.raml
+         
 /wsact:
    type:  { item : {typename : "wsact"} }
-
+   
 /wzat:
-   type:  { item : {typename: "wzat"}}
-
+   type:  { item : {typename: "wzat"} }
+      
+       

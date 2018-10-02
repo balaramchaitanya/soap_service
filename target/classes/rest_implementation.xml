@@ -11,7 +11,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
     <ws:consumer-config name="Web_Service_Consumer" wsdlLocation="aclwspolchgsnet.wsdl" service="aclwspolchgsnet" port="aclwspolchgsnetSoap" serviceAddress="http://localhost:8081/aclwspolchgsnet/aclwspolchgsnetSoap" doc:name="Web Service Consumer"/>
-    <flow name="rest_implementation">
+    <sub-flow name="rest_subflow">
         <dw:transform-message doc:name="parsing to xml input for web service">
             <dw:set-payload><![CDATA[%dw 1.0
 %input payload application/json
@@ -31,32 +31,65 @@ soapenv:
         </dw:transform-message>
         <logger message="#[payload]" level="INFO" doc:name="Logger"/>
         <ws:consumer config-ref="Web_Service_Consumer" operation="WSACT" doc:name="Web Service Consumer : consuming soap service"/>
-        <json:xml-to-json-transformer returnClass="java.lang.Object" doc:name="XML to JSON"/>
-        <dw:transform-message doc:name="Transform Message">
+        <logger message="#[payload]" level="INFO" doc:name="Logger123"/>
+        <dw:transform-message doc:name="xml to json and fiels transformation">
             <dw:set-payload><![CDATA[%dw 1.0
-%output application/json
-skipNullOn="everywhere"
-%namespace ns0 http://unitedfiregroup.com/
+%input payload application/xml 
+%output application/json skipNullOn="everywhere"
+%function skipEmpty(value) 
+(value) when value != "" otherwise null 
 
 ---
-payload.WSACTResponse.WSACTResult mapObject  (item,index) -> {
+{
+	phone: payload.WSACTResponse.WSACTResult.PHONE_1 ++ "-" ++ payload.WSACTResponse.WSACTResult.PHONE_2 ++ "-" ++ payload.WSACTResponse.WSACTResult.PHONE_3,
+	fax:payload.WSACTResponse.WSACTResult.FAX_1 ++ "-" ++ payload.WSACTResponse.WSACTResult.FAX_2 ++ "-" ++ payload.WSACTResponse.WSACTResult.FAX_3 ,
+	
+	search_type: payload.WSACTResponse.WSACTResult.SEARCH_TYP,
+	search_no: payload.WSACTResponse.WSACTResult.SEARCH_NO,
+	agent_no: payload.WSACTResponse.WSACTResult.AGENT,
+	result: payload.WSACTResponse.WSACTResult.WSRESULT,
+	wsmessage: payload.WSACTResponse.WSACTResult.WSMESSAGE,
+	contact_name: payload.WSACTResponse.WSACTResult.CONTACT_NM,
+	account_number: payload.WSACTResponse.WSACTResult.ACCOUNT_NO,
+	account_primary_account_name: payload.WSACTResponse.WSACTResult.ACCT_NAME1,
+	account_address: payload.WSACTResponse.WSACTResult.ACCT_ADDR1,
+	account_state: payload.WSACTResponse.WSACTResult.ACCT_ST,
+	account_zip: payload.WSACTResponse.WSACTResult.ACCT_ZIP,
+	service_center: true as :boolean,
+	lineItems:  payload.WSACTResponse.WSACTResult.*LineItems   map (item, index) -> {
+	     pol_stat: skipEmpty(item.POL_STAT)    ,
+		type_code: skipEmpty(item.TYPE_CODE),
+		(effective_date: item.EFF_DATE as :date {format: "yyyyMMdd"} as :string {format: "yyyy-MM-dd"}) when item !={} and 
+		item.EFF_DATE !=null and item.EFF_DATE !=0 and  (item.EFF_DATE matches /(\d{8})/) ,
+		(expiry_date: item.EXP_DATE as :date {format: "yyyyMMdd"} as :string {format: "yyyy-MM-dd"}) when item !={} and 
+		item.EXP_DATE !=null and item.EXP_DATE !=0 and  (item.EXP_DATE matches /(\d{8})/) ,
+		coordination-of_benifits:skipEmpty(item.COB),
+		policy_status:skipEmpty(item.POL_STATUS) ,
+		policy_agent:skipEmpty(item.POL_AGENT),
+		policy_number:skipEmpty(item.POLNO)  ,
+		policy_plan:skipEmpty(item.P_PLN) ,
+		policy_type:skipEmpty(item.POL_TYPE)  ,
+		bill_description:skipEmpty(item.BILL_DESC),
+		name: skipEmpty(item.NAME1) ,
+		address1:skipEmpty(item.ADDR1)  ,
+		city:skipEmpty(item.CITY)  ,
+		state: skipEmpty(item.STATE_2A),
+		zipcode:skipEmpty(item.ZIPCODE)  ,
+		rate_state:skipEmpty(item.RATE_ST)  ,
+		change_yn: true as :boolean ,
+		term: skipEmpty(item.TERM) ,
+		bus_type:skipEmpty(item.BUS_TYPE)
+	} ,
+	statusmessages: 
+		StatusMessage: payload.WSACTResponse.WSACTResult.StatusMessages.StatusMessage
+}
 
-(  phone:payload.WSACTResponse.WSACTResult.PHONE_1 ++ "-" ++ payload.WSACTResponse.WSACTResult.PHONE_2 ++ "-" ++ payload.WSACTResponse.WSACTResult.PHONE_3 ) when index !="",
-(fax:payload.WSACTResponse.WSACTResult.FAX_1 ++ "-" ++ payload.WSACTResponse.WSACTResult.FAX_2 ++ "-" ++ payload.WSACTResponse.WSACTResult.FAX_3) when index !="" ,
-(contact_name: payload.WSACTResponse.WSACTResult.CONTACT_NM) when index as :string =='CONTACT_NM',
-(search_type: payload.WSACTResponse.WSACTResult.SEARCH_TYP) when index as :string =='SEARCH_TYP',
-(account_address: payload.WSACTResponse.WSACTResult.ACCT_ADDR1) when index as :string =='ACCT_ADDR1',
-(account_state: payload.WSACTResponse.WSACTResult.ACCT_ST) when index as :string =='ACCT_STATE',
-(service_center: payload.WSACTResponse.WSACTResult.SERV_CNTR) when index as :string =='SERV_CNTR',
-((lower index) :  item) when index as :string !=""
-	 
-	}-'phone_1' -'phone_2' -'phone_3' -'fax_1' -'fax_2'-'fax_3' -'contact_nm' -'search_typ'-'acct_addr1' -'acct_state'-'serv_cntr'
 ]]></dw:set-payload>
         </dw:transform-message>
         <logger message="#[payload]" level="INFO" doc:name="Logger : Displaying payload"/>
-        <catch-exception-strategy  doc:name="Catch Exception Strategy">
-            <set-payload value="#[exception.getSummaryMessage()]" doc:name="Set Payload to exception summary message"/>
-            <set-property propertyName="'http.status'" value="500" doc:name="Property set to 500"/>
-        </catch-exception-strategy>
+    </sub-flow>
+    <flow name="rest_implementation">
+        <flow-ref name="rest_subflow" doc:name="Flow Reference"/>
+        <exception-strategy ref="ChoiceExceptionStrategy" doc:name="Reference Exception Strategy"/>
     </flow>
 </mule>

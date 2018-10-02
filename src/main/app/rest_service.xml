@@ -8,7 +8,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
     <flow name="rest_service-main">
         <http:listener config-ref="rest_service-httpListenerConfig" path="/api/*" doc:name="HTTP" />
         <apikit:router config-ref="rest_service-config" doc:name="APIkit Router" />
-        <exception-strategy ref="rest_service-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy" />
+        <exception-strategy ref="ChoiceExceptionStrategy" doc:name="Reference Exception Strategy" />
     </flow>
     <flow name="rest_service-console">
         <http:listener config-ref="rest_service-httpListenerConfig" path="/console/*" doc:name="HTTP" />
