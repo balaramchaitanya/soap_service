@@ -1,8 +1,4 @@
-target/
-.project
-.classpath
-catalog/
-.mule
-.settings
+/target
+
 
 
