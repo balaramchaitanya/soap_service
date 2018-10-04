@@ -8,7 +8,7 @@ http://www.mulesoft.org/schema/mule/assert-object-equals http://www.mulesoft.org
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
     <munit:config name="munit" doc:name="MUnit configuration" mock-connectors="false" mock-inbounds="false"/>
     <spring:beans>
-        <spring:import resource="classpath:rest_implementation.xml"/>
+        <spring:import resource="classpath:rest-sys-api.xml"/>
         <spring:import resource="classpath:common-errors.xml"/>
     </spring:beans>
     <http:request-config name="HTTP_Request_Configuration" host="localhost" port="8082" basePath="api" doc:name="HTTP Request Configuration"/>
@@ -25,7 +25,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
                 <munit:inbound-property key="search_type" value="'A'"/>
                 <munit:inbound-property key="search_no" value="3000074110"/>
                 <munit:inbound-property key="agent" value="151134"/>
-                <munit:inbound-property key="lst_record" value="''"/>
+                <munit:inbound-property key="lst_record" value="1234"/>
             </munit:inbound-properties>
         </munit:set>
         <flow-ref name="rest_implementation" doc:name="rest_implementation"/>

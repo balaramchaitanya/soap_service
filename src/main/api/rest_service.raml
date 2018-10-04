@@ -3,11 +3,11 @@ version: v1
 title: Sentiment Analysis Data Service
 
 traits: 
-  queryParameters : !include Trait/queryparameters-trait.raml
-  hasResponseItem :  !include Trait/Response200-trait.raml
+  queryParameters : !include traits/queryparameters-trait.raml
+  hasResponseItem :  !include traits/Response200-trait.raml
 
 uses:
-  library2: Data_Type/response-library.raml
+  library2: datatypes/response-library.raml
 
 resourceTypes: 
   item:
