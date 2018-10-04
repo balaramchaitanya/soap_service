@@ -15,7 +15,7 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <apikit:console config-ref="rest_service-config" doc:name="APIkit Console" />
     </flow>
     <flow name="get:/wsact:rest_service-config">
-        <flow-ref name="rest_implementation" doc:name="rest_implementation" />
+        <flow-ref name="rest-sys-api-implementation" doc:name="rest_implementation" />
     </flow>
     <flow name="get:/wzat:rest_service-config">
         <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>

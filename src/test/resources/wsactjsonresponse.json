@@ -1,65 +1,67 @@
 {
-    "phone": "319-363-6762",
-    "fax": "319-363-8992",
-    "search_type": "A",
-    "search_no": "3000074110",
-    "agent_no": "151134",
-    "wsresult": "100",
-    "wsmessage": "SUCCESSFUL",
-    "contact_name": "CHERRYL BARTUNEK",
-    "account_number": "3000074110",
-    "account_address": "2709 PRIMROSE LN SW",
-    "account_state": "IA",
-    "account_zip": "52404-2453",
-    "service_center": true,
-    "lineItems": [
-        {
-            "pol_stat": "II",
-            "type_code": "BP2",
-            "effective_date": "2017-11-20",
-            "expiry_date": "2018-11-20",
-            "coordination-of_benifits":"331",
-            "policy_status": "In Force",
-            "policy_agent": "151134",
-            "policy_number": "60039894",
-            "policy_plan": "D",
-            "policy_type": "UNI-PAK",
-            "name": "BARTUNEK APPLIANCE INC",
-            "address1": "2709 PRIMROSE LN SW",
-            "city": "CEDAR RAPIDS",
-            "state": "IA",
-            "zipcode": "52404-2453",
-            "rate_state": "IA",
-            "change_yn": true,
-            "term": "C",
-            "bus_type": "C"
-        },
-        {
-            "coordination-of_benifits": "0",
-            "policy_agent": "0",
-            "policy_number": "0",
-            "change_yn": true
-        },
-        {
-            "coordination-of_benifits": "0",
-            "policy_agent": "0",
-            "policy_number": "0",
-            "change_yn": true
-        },
-        {
-            "coordination-of_benifits": "0",
-            "policy_agent": "0",
-            "policy_number": "0",
-            "change_yn": true
-        },
-        {
-            "coordination-of_benifits": "0",
-            "policy_agent": "0",
-            "policy_number": "0",
-            "change_yn": true
-        }
-    ],
-    "statusmessages": {
-        "StatusMessage": "17:09:55:75    INQUIRY REQUEST"
+  "phone": "319-363-6762",
+  "fax": "319-363-8992",
+  "search_type": "A",
+  "search_no": "3000074110",
+  "agent_no": "151134",
+  "result": "100",
+  "wsmessage": "SUCCESSFUL",
+  "contact_name": "CHERRYL BARTUNEK",
+  "account_number": "3000074110",
+  "account_primary_account_name": "BARTUNEK APPLIANCE INC",
+  "account_address": "2709 PRIMROSE LN SW",
+  "account_state": "IA",
+  "account_zip": "52404-2453",
+  "service_center": true,
+  "lineItems": [
+    {
+      "pol_stat": "II",
+      "type_code": "BP2",
+      "effective_date": "2017-11-20",
+      "expiry_date": "2018-11-20",
+      "coordination-of_benifits": "331",
+      "policy_status": "In Force",
+      "policy_agent": "151134",
+      "policy_number": "60039894",
+      "policy_plan": "D",
+      "policy_type": "UNI-PAK",
+      "bill_description": "Direct Bill",
+      "name": "BARTUNEK APPLIANCE INC",
+      "address1": "2709 PRIMROSE LN SW",
+      "city": "CEDAR RAPIDS",
+      "state": "IA",
+      "zipcode": "52404-2453",
+      "rate_state": "IA",
+      "change_yn": true,
+      "term": "C",
+      "bus_type": "C"
+    },
+    {
+      "coordination-of_benifits": "0",
+      "policy_agent": "0",
+      "policy_number": "0",
+      "change_yn": true
+    },
+    {
+      "coordination-of_benifits": "0",
+      "policy_agent": "0",
+      "policy_number": "0",
+      "change_yn": true
+    },
+    {
+      "coordination-of_benifits": "0",
+      "policy_agent": "0",
+      "policy_number": "0",
+      "change_yn": true
+    },
+    {
+      "coordination-of_benifits": "0",
+      "policy_agent": "0",
+      "policy_number": "0",
+      "change_yn": true
     }
+  ],
+  "statusmessages": {
+    "StatusMessage": "17:09:55:75    INQUIRY REQUEST"
+  }
 }

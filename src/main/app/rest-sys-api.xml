@@ -88,7 +88,7 @@ soapenv:
         </dw:transform-message>
         <logger message="#[payload]" level="INFO" doc:name="Logger : Displaying payload"/>
     </sub-flow>
-    <flow name="rest_implementation">
+    <flow name="rest-sys-api-implementation">
         <flow-ref name="rest_subflow" doc:name="Flow Reference"/>
         <exception-strategy ref="ChoiceExceptionStrategy" doc:name="Reference Exception Strategy"/>
     </flow>
