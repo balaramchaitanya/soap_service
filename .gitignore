@@ -4,7 +4,8 @@ src/main/api/.repository/
 .project
 .classpath
 .mule/
-.catalog/
+catalog/
+reports/
 
 
 
