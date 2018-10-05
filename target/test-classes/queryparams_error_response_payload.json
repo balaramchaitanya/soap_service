@@ -1,3 +1,0 @@
-{
-    "message": "Invalid value '''' for query parameter search_no. Invalid type String, expected Integer (org.mule.module.apikit.exception.InvalidQueryParameterException)."
-}
