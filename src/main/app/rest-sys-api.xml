@@ -89,7 +89,7 @@ soapenv:
         <logger message="#[payload]" level="INFO" doc:name="Logger : Displaying payload"/>
     </sub-flow>
     <flow name="rest_implementation">
-        <flow-ref name="rest_subflow" doc:name="Flow Reference"/>
+        <flow-ref name="rest_subflow" doc:name="rest_subflow"/>
         <exception-strategy ref="ChoiceExceptionStrategy" doc:name="Reference Exception Strategy"/>
     </flow>
 </mule>

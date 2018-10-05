@@ -6,10 +6,10 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/mock http://www.mulesoft.org/schema/mule/mock/current/mule-mock.xsd
 http://www.mulesoft.org/schema/mule/assert-object-equals http://www.mulesoft.org/schema/mule/assert-object-equals/current/mule-assert-object-equals.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
-    <munit:config name="munit" doc:name="MUnit configuration" mock-connectors="false" mock-inbounds="false"/>
+    <munit:config name="munit" doc:name="MUnit configuration" />
     <spring:beans>
-        <spring:import resource="classpath:rest-sys-api.xml"/>
         <spring:import resource="classpath:common-errors.xml"/>
+        <spring:import resource="classpath:rest-sys-api.xml"/>
     </spring:beans>
     <http:request-config name="HTTP_Request_Configuration" host="localhost" port="8082" basePath="api" doc:name="HTTP Request Configuration"/>
    
@@ -29,6 +29,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
             </munit:inbound-properties>
         </munit:set>
         <flow-ref name="rest_implementation" doc:name="rest_implementation"/>
+        <logger message="#[payload]" level="INFO" doc:name="Logger456"/>
         <assert-object-equals:compare-objects expected-ref="#[getResource('wsactjsonresponse.json').asStream()]" doc:name="Assert Object Equals"/>
     </munit:test>
     <munit:test name="rest_implementation-fail-test-suiteTest" description="MUnit Test">
@@ -46,22 +47,8 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
                 <munit:invocation-property key="lst_record" value="123"/>
             </munit:invocation-properties>
         </munit:set>
-        <flow-ref name="rest_implementation" doc:name="Flow Reference"/>
+        <flow-ref name="rest_implementation" doc:name="rest_implementation"/>
         <logger message="#[payload]" level="INFO" doc:name="Logger"/>
         <assert-object-equals:compare-objects expected-ref="#[getResource('transformation_error_response_payload.json').asStream()]" doc:name="Assert Object Equals"/>
-    </munit:test>
-    <munit:test name="rest_implementation-test-suiteTest" description="MUnit Test">
-        <http:request config-ref="HTTP_Request_Configuration" path="/wsact" method="GET" doc:name="HTTP">
-            <http:request-builder>
-                <http:query-param paramName="search_type" value="'A'"/>
-                <http:query-param paramName="search_no" value="''"/>
-                <http:query-param paramName="agent" value="1234"/>
-                <http:query-param paramName="lst_record" value="345"/>
-            </http:request-builder>
-        </http:request>
-        <object-to-string-transformer doc:name="Object to String"/>
-        <munit:assert-true condition="#[messageInboundProperty('http.status').is(eq(400))]" doc:name="Assert True"/>
-        <assert-object-equals:compare-objects expected-ref="#[getResource('qeryparams_error_response_payload.json').asStream()]" doc:name="Assert Object Equals"/>
-        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
     </munit:test>
 </mule>

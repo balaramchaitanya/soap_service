@@ -16,13 +16,13 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
         <catch-exception-strategy when="#[exception.causeMatches('org.mule.module.apikit.exception.InvalidHeaderException') ]" doc:name="Validation Catch Exception Strategy">
             <set-variable variableName="statusCode" value="400" doc:name="statusCode"/>
             <set-variable variableName="exceptionCode" value="#[exception.?message or exception.cause]" doc:name="exceptionCode"/>
-            <flow-ref name="formError_subFlow" doc:name="Call formError subFlow"/>
+            <flow-ref name="formError_subFlow" doc:name="formError_subFlow"/>
         </catch-exception-strategy>
         
         <catch-exception-strategy when="#[exception.causeMatches('org.mule.module.json.validation.*')]" doc:name="Json Validation Catch Exception Strategy">
             <set-variable variableName="statusCode" value="400" doc:name="statusCode"/>
             <set-variable variableName="exceptionCode" value="#[exception.?message or exception.cause]" doc:name="exceptionCode"/>
-            <flow-ref name="formError_subFlow" doc:name="Call formError subFlow"/>
+            <flow-ref name="formError_subFlow" doc:name="formError_subFlow"/>
         </catch-exception-strategy>
         
         <catch-exception-strategy when="#[exception.causeMatches('org.mule.module.http.internal.request*')]" doc:name="Http RESTCall Exception">
@@ -38,56 +38,56 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
         <catch-exception-strategy when="#[exception.causeMatches('org.mule.module.apikit.exception.NotFoundException')]" doc:name="404">
             <set-payload value="#[flowVars.originalPayload]" encoding="UTF-8" mimeType="application/json" doc:name="Set Payload"/>
             <set-variable variableName="statusCode" value="404" doc:name="statusCode"/>
-            <flow-ref name="notLogabbleExcep_subFlow" doc:name="Call notLogabbleExcep_subFlow subFlow"/>
+            <flow-ref name="notLogabbleExcep_subFlow" doc:name="notLogabbleExcep_subFlow"/>
         </catch-exception-strategy>
         
         <catch-exception-strategy when="#[exception.causeMatches('org.mule.module.apikit.exception.MethodNotAllowedException')]" doc:name="405">
             <set-variable variableName="statusCode" value="405" doc:name="statusCode"/>
             <set-variable variableName="exceptionCode" value="http.methodnotallowed" doc:name="exceptionCode"/>
-            <flow-ref name="formError_subFlow" doc:name="Call formError subFlow"/>
+            <flow-ref name="formError_subFlow" doc:name="formError_subFlow"/>
         </catch-exception-strategy>
         
         <catch-exception-strategy when="#[exception.causeMatches('org.mule.module.apikit.exception.UnsupportedMediaTypeException')]" doc:name="415">
             <set-variable variableName="statusCode" value="415" doc:name="statusCode"/>
             <set-variable variableName="exceptionCode" value="http.unspportedmediatype" doc:name="exceptionCode"/>
-            <flow-ref name="formError_subFlow" doc:name="Call formError subFlow"/>
+            <flow-ref name="formError_subFlow" doc:name="formError_subFlow"/>
         </catch-exception-strategy>
         
         <catch-exception-strategy when="#[exception.causeMatches('org.mule.module.apikit.exception.NotAcceptableException')]" doc:name="406">
             <set-variable variableName="statusCode" value="406" doc:name="statusCode"/>
             <set-variable variableName="exceptionCode" value="http.notacceptable" doc:name="exceptionCode"/>
-            <flow-ref name="formError_subFlow" doc:name="Call formError subFlow"/>
+            <flow-ref name="formError_subFlow" doc:name="formError_subFlow"/>
         </catch-exception-strategy>
         
         <catch-exception-strategy when="#[exception.causeMatches('org.mule.module.apikit.exception.InvalidQueryParameterException')]" doc:name="400 - InvalidQueryParameterException">
             <set-variable variableName="statusCode" value="400" doc:name="statusCode"/>
             <set-variable variableName="exceptionCode" value="#[exception.?message or exception.cause]" doc:name="exceptionCode"/>
-            <flow-ref name="notLogabbleExcep_subFlow" doc:name="Call notLogabbleExcep_subFlow"/>
+            <flow-ref name="notLogabbleExcep_subFlow" doc:name="notLogabbleExcep_subFlow"/>
         </catch-exception-strategy>
         
         <catch-exception-strategy when="#[exception.causeMatches('org.mule.module.apikit.exception.InvalidUriParameterException')]" doc:name="400 - InvalidUriParameterException">
             <set-variable variableName="statusCode" value="400" doc:name="statusCode"/>
             <set-variable variableName="exceptionCode" value="#[exception.?message or exception.cause]" doc:name="exceptionCode"/>
-            <flow-ref name="notLogabbleExcep_subFlow" doc:name="Call notLogabbleExcep_subFlow"/>
+            <flow-ref name="notLogabbleExcep_subFlow" doc:name="notLogabbleExcep_subFlow"/>
         </catch-exception-strategy>
         
         <catch-exception-strategy when="#[exception.causeMatches('com.mulesoft.weave.mule.exception.WeaveExecutionException')]" doc:name="500 - DataWeaveException">
             <set-variable variableName="statusCode" value="500" doc:name="statusCode"/>
             <set-variable variableName="exceptionCode" value="#[exception.?message or exception.cause]" doc:name="exceptionCode"/>
-            <flow-ref name="formError_subFlow" doc:name="Call formError subFlow"/>
+            <flow-ref name="formError_subFlow" doc:name="formError_subFlow"/>
         </catch-exception-strategy>
         
         <catch-exception-strategy when="#[exception.causeMatches('org.mule.module.apikit.exception.BadRequestException')]" doc:name="400 - BadRequestException">
             <set-payload value="#[flowVars.originalPayload]" doc:name="Set Original Payload"/>
             <set-variable variableName="statusCode" value="400" doc:name="statusCode"/>
             <set-variable variableName="exceptionCode" value="http.badrequest" doc:name="exceptionCode"/>
-            <flow-ref name="notLogabbleExcep_subFlow" doc:name="Call notLogabbleExcep_subFlow"/>
+            <flow-ref name="notLogabbleExcep_subFlow" doc:name="notLogabbleExcep_subFlow"/>
         </catch-exception-strategy>
         
         <catch-exception-strategy when="#[exception.causeMatches('org.mule.extension.validation.*') ]" doc:name="Validation Catch Exception Strategy">
             <set-variable variableName="statusCode" value="400" doc:name="statusCode"/>
             <set-variable variableName="exceptionCode" value="#[exception.cause.message]" doc:name="exceptionCode"/>
-            <flow-ref name="formError_subFlow" doc:name="Call formError_subFlow"/>
+            <flow-ref name="formError_subFlow" doc:name="formError_subFlow"/>
         </catch-exception-strategy>
         
         <catch-exception-strategy when="#[exception.causeMatches('org.mule.api.MessagingException')]" doc:name="504">
@@ -104,13 +104,13 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
 	                    <set-variable variableName="exceptionCode" value="Unknown error" doc:name="exceptionCode"/>
 	            </otherwise>
             </choice>
-            <flow-ref name="formError_subFlow" doc:name="Call formError subFlow"/>
+            <flow-ref name="formError_subFlow" doc:name="formError_subFlow"/>
         </catch-exception-strategy>
         
         <catch-exception-strategy doc:name="Other Catch Exception Strategy">
             <set-variable variableName="statusCode" value="500" doc:name="statusCode"/>
             <set-variable variableName="exceptionCode" value="#[new String(org.mule.util.ExceptionUtils.getRootCauseMessage(exception))]" doc:name="exceptionCode"/>
-            <flow-ref name="formError_subFlow" doc:name="Call formError subFlow"/>
+            <flow-ref name="formError_subFlow" doc:name="formError_subFlow"/>
         </catch-exception-strategy>
     </choice-exception-strategy> 
     <sub-flow name="notLogabbleExcep_subFlow">
